@@ -23,7 +23,7 @@ app.get("/mahasiswa", (req, res) => {
 
 app.get("/mahasiswa/:npm", (req, res) => {
   url_data = req.params.npm;
-  const sql = `Select * from tb_mahasiswa where npm_mhs='${url_data}'`;
+  const sql = `Select * from tb_mahasiswa where npm='${url_data}'`;
   db.query(sql, (err, result) => {
     if (err) throw err;
     response(200, result, "get data mahasiswa by npm", res);
@@ -33,7 +33,7 @@ app.get("/mahasiswa/:npm", (req, res) => {
 app.post("/mahasiswa", (req, res) => {
   const { nama, npm, alamat } = req.body;
 
-  const sql = `insert into tb_mahasiswa (nama_mhs,npm_mhs,alamat_mhs) values ('${nama}','${npm}','${alamat}');`;
+  const sql = `insert into tb_mahasiswa (nama,npm,alamat) values ('${nama}','${npm}','${alamat}');`;
 
   db.query(sql, (err, fields) => {
     if (err) response(500, "invalid", err, res);
@@ -49,7 +49,7 @@ app.post("/mahasiswa", (req, res) => {
 
 app.put("/mahasiswa", (req, res) => {
   const { nama, npm, alamat } = req.body;
-  const sql = `UPDATE tb_mahasiswa SET nama_mhs='${nama}', npm_mhs='${npm}', alamat_mhs='${alamat}' WHERE npm_mhs='${npm}'`;
+  const sql = `UPDATE tb_mahasiswa SET nama='${nama}', npm='${npm}', alamat='${alamat}' WHERE npm='${npm}'`;
 
   db.query(sql, (err, fields) => {
     if (err) response(500, "invalid", `error`, res);
@@ -68,7 +68,7 @@ app.put("/mahasiswa", (req, res) => {
 
 app.delete("/mahasiswa", (req, res) => {
   const { npm } = req.body;
-  const sql = `DELETE FROM tb_mahasiswa where npm_mhs ='${npm}'`;
+  const sql = `DELETE FROM tb_mahasiswa where npm ='${npm}'`;
   db.query(sql, (err, fields) => {
     if (err) response(500, "invalid", "error", res);
     if (fields?.affectedRows) {

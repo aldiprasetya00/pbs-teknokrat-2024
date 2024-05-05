@@ -2,10 +2,10 @@ const mysql = require("mysql");
 
 const db = mysql.createConnection({
     host: "sql6.freesqldatabase.com",
-    user: "sql6695637",
-    database: "sql6695637",
-    password: "naLKHVA7px",
+    user: "sql6702759",
+    database: "sql6702759",
+    password: "SKBuD2FeYk",
 });
 
 
-module.exports = db;
+module.exports = db;                                                                                                                                                            
